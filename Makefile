@@ -1,5 +1,5 @@
 test : 
-	cargo test --package terraparse --test unit -- it_works --exact --nocapture
+	cargo test 
 
 build :
 	cargo build
