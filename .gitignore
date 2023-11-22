@@ -1,1 +1,7 @@
 /target
+
+# ignore terraform state/providers/lock files
+examples/sample*/.terraform/
+examples/sample*/.terraform.*lock*
+examples/sample*/terraform.tfstate
+examples/sample*/*.out
