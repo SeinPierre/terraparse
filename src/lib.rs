@@ -51,8 +51,24 @@ mod tests {
     let json_file = File::open(json_file_path).expect("file not found");
     let deserialized_file : Value =
         from_reader(json_file).expect("error while reading json");
-    println!("deserialized_file: {:?}", deserialized_file);
+    // println!("deserialized_file: {:?}", deserialized_file);
     let obj = deserialized_file.as_object().unwrap();
+    let resource_changes = obj.get("resource_changes").unwrap();
+    // println!("{:?}",resource_changes);
+    match resource_changes {
+        Value::Array(v) => print!("{:?}",v),
+        _ => println!("Toto")
+    }
+    // for (key,value) in obj.iter() {
+    //     println!("{} : {}", key, match value {
+    //         Value::Bool(v) => format!("{} (Bool)",v),
+    //         Value::String(v) => format!("{} (String)",v),
+    //         Value::Number(v) => format!("{} (Number)",v),
+    //         Value::Object(v) => format!("{:?} (Object)",v),
+    //         _ => format!("Other")
+            
+    //     })
+    // }
     assert_eq!(obj.get("format_version").unwrap(), "1.1");
 
     }
